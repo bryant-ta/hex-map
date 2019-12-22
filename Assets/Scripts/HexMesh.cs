@@ -45,10 +45,9 @@ public class HexMesh : MonoBehaviour
     void Triangulate (HexCell cell)
     {
         Vector3 center = cell.transform.localPosition;
-        for (int i = 0; i < 6; i++)
+        for (HexDirection d = HexDirection.NE, d <= HexDirection.NW; d++
         {
-            AddTriangle(center, center + HexMetrics.corners[i], center + HexMetrics.corners[i + 1]);
-            AddTriangleColor(cell.color);
+            Triangulate(d, cell);
         }
     }
 
